@@ -48,7 +48,7 @@ export const Card = () => {
 
   return (
     <div className="bg-white rounded-lg w-full p-5 flex gap-5">
-      <div className="nav_area w-[30%] ">
+      <div className="nav_area w-[25%] ">
         <div className="rounded-lg  py-8 px-8 h-full w-full bg_image ">
           {stepArray.map((steps, index) => {
             return (
@@ -63,7 +63,7 @@ export const Card = () => {
           })}
         </div>
       </div>
-      <div className="bg-white w-[70%] px-16 pt-8">
+      <div className="bg-white w-[70%] px-24 pt-8">
         {selectedIndex === 0 ? (
           <StepOneContent />
         ) : selectedIndex === 1 ? (
