@@ -1,9 +1,9 @@
 import React from 'react';
 
-const NavStep = ({active, stepNum, stepInfo}: {active?:boolean, stepNum:string, stepInfo:string }) => {
+const NavStep = ({active, stepNum, stepInfo, handleClick}: {active?:boolean, stepNum:string, stepInfo:string, handleClick: () => void }) => {
   return (
-    <div className='flex gap-3 items-center cursor-pointer py-3 ' >
-        <div className={` ${active ? "bg-light_gray text-marine_blue" : " text-white  bg-transparent "} border border-white flex justify-center items-center font-bold rounded-full  w-8 h-8   `}>
+    <div className='flex gap-3 items-center cursor-pointer py-3 ' onClick={handleClick} >
+        <div className={` ${active ? "bg-light_blue border-light_blue text-marine_blue" : " text-white  bg-transparent "} border border-white flex justify-center items-center font-bold rounded-full  w-8 h-8   `}>
             {stepNum}
         </div>
         <div className='flex flex-col'>
