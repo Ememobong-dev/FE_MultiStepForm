@@ -1,6 +1,6 @@
-import React from 'react'
-import TopSideNav from './TopRightTitle'
-import FormInput from './FormInput'
+import React from 'react';
+import TopSideNav from './TopRightTitle';
+import FormInput from './FormInput';
 
 const StepOneContent = () => {
   return (
