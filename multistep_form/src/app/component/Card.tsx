@@ -6,6 +6,7 @@ import NavStep from "./NavStep";
 import StepTwoContent from "./StepTwoContent";
 import StepThreeContent from "./StepThreeContent";
 import StepFourContent from "./StepFourContent";
+import ConfirmStep from "./ConfirmStep";
 
 const stepArray = [
   {
@@ -28,6 +29,7 @@ const stepArray = [
 
 export const Card = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isConfirmSlide, setIsConfirmSlide] = useState(false)
 
   const handleActiveClick = (index: number) => {
     setSelectedIndex(index);
@@ -39,12 +41,13 @@ export const Card = () => {
 
   const handleNext = () => {
     if (selectedIndex === stepArray.length - 1) {
-      // Do Thank you page
-      alert("Show Thank you");
+      setIsConfirmSlide(true)
       return;
     }
     setSelectedIndex(selectedIndex + 1);
   };
+
+  console.log("This if for confirmSlide", isConfirmSlide);
 
   return (
     <div className="bg-white rounded-lg w-full p-5 flex gap-5">
@@ -70,13 +73,14 @@ export const Card = () => {
           <StepTwoContent />
         ) : selectedIndex === 2 ? (
           <StepThreeContent />
-        ) : selectedIndex === 3 ? (
+        ) :(selectedIndex === 3 && isConfirmSlide) ? (
+           <ConfirmStep />
+        ): (
           <StepFourContent />
-        ) : (
-          <StepOneContent />
-        )}
+        )
+        }
 
-        {selectedIndex <= stepArray.length - 1 && (
+        {(selectedIndex <= stepArray.length - 1 && !isConfirmSlide) && (
           <div
             className={`flex mt-20 ${
               selectedIndex > 0 ? "justify-between items-center" : "justify-end"
@@ -93,7 +97,7 @@ export const Card = () => {
               </>
             )}
             <button
-              className="py-3 px-6 bg-marine_blue  hover:bg-purplish_blue rounded-lg text-white"
+              className={`py-3 px-6  ${selectedIndex === stepArray.length - 1 ? "bg-purplish_blue" : "bg-marine_blue"}  hover:bg-purplish_blue rounded-lg text-white`}
               onClick={handleNext}
             >
               {selectedIndex === stepArray.length - 1 ? "Confirm" : "Next Step"}
